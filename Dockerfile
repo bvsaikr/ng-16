@@ -6,4 +6,4 @@ RUN npm install @angular/cli
 COPY . .
 RUN npm run build
 EXPOSE 4200
-CMD ["npm", "start", "--host 0.0.0.0"]
+CMD ["npm", "start", "--host 0.0.0.0", "--port 4200"]
