@@ -6,5 +6,5 @@ RUN npm install
 RUN npm run build
 # Serve Application using Nginx Server
 FROM nginx:alpine
-COPY --from=build /app/dist// /usr/share/nginx/html
+COPY --from=build /app/dist/angular-16-crud/ /usr/share/nginx/html
 EXPOSE 80
