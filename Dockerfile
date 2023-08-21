@@ -1,9 +1,10 @@
 FROM node:18-alpine AS build
-RUN mkdir -p /usr/src/app
-WORKDIR usr/src/app
-COPY package*.json ./
-RUN npm install @angular/cli
+WORKDIR /app
+
 COPY . .
+RUN npm install
 RUN npm run build
-EXPOSE 4200
-CMD ["npm", "start"]
+# Serve Application using Nginx Server
+FROM nginx:alpine
+COPY --from=build /app/dist// /usr/share/nginx/html
+EXPOSE 80
